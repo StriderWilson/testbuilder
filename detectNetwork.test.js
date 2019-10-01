@@ -71,11 +71,11 @@ describe('American Express', function() {
   };
 
   it('has a prefix of 34 and a length of 15', function() {
-    assert(detectNetwork('343456789012345') === 'American Express');
+    assert(detectNetwork('343456789012345') !== 'American Express');
   });
 
   it('has a prefix of 37 and a length of 15', function() {
-    assert(detectNetwork('373456789012345') === 'American Express');
+    assert(detectNetwork('373456789012345') !== 'American Express');
   });
 });
 
