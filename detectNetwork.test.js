@@ -323,11 +323,28 @@ describe('China UnionPay', function() {
       cardString = cardString + '1';
     }
   }
+  for (var prefix = 6282; prefix <= 6288; prefix++) {
+    var cardString = prefix + '123456789012';
+    for (var length = 16; length <= 19; length++) {
+      (function(prefix, length, cardString) {
+        it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
+          detectNetwork(cardString).should.equal('China UnionPay');
+        });
+      })(prefix, length, cardString)
+      cardString = cardString + '1';
+    }
+  }
 });
 
 describe('Switch', function() {
   // Write full test coverage for the Switch card
-  it('has a prefix of 4903 and a length of 16, 18, or 19', function() {
+  it('has a prefix of 4903 and a length of 16', function() {
     detectNetwork('4903263456783456').should.equal('Switch');
+  });
+  it('has a prefix of 4903 and a length of 18', function() {
+    detectNetwork('490326345678345612').should.equal('Switch');
+  });
+  it('has a prefix of 4903 and a length of 19', function() {
+    detectNetwork('4903263456783456122').should.equal('Switch');
   });
 });
