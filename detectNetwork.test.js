@@ -305,11 +305,22 @@ describe('China UnionPay', function() {
     var cardString = prefix + '1234567890';
     for (var length = 16; length <= 19; length++) {
       (function(prefix, length, cardString) {
-        it('has a prefix of ' + prefix + ' and a length of' + length, function() {
+        it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
           detectNetwork(cardString).should.equal('China UnionPay');
         });
       })(prefix, length, cardString)
-      cardString = cardString + '1'
+      cardString = cardString + '1';
+    }
+  }
+  for (var prefix = 624; prefix <= 626; prefix++) {
+    var cardString = prefix + '1234567890123';
+    for (var length = 16; length <= 19; length++) {
+      (function(prefix, length, cardString) {
+        it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
+          detectNetwork(cardString).should.equal('China UnionPay');
+        });
+      })(prefix, length, cardString)
+      cardString = cardString + '1';
     }
   }
 });
