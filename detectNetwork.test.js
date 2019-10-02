@@ -106,17 +106,18 @@ describe('MasterCard', function() {
   // If you want to know more, check out the documentation.
   //   http://chaijs.com/api/bdd/
   var expect = chai.expect;
+  var should = chai.should();
 
   it('has a prefix of 51 and a length of 16', function() {
-    expect(detectNetwork('5112345678901234')).to.equal('MasterCard');
+    detectNetwork('5112345678901234').should.equal('MasterCard');
   });
 
   it('has a prefix of 52 and a length of 16', function() {
-    expect(detectNetwork('5212345678901234')).to.equal('MasterCard');
+    detectNetwork('5212345678901234').should.equal('MasterCard');
   });
 
   it('has a prefix of 53 and a length of 16', function() {
-    expect(detectNetwork('5312345678901234')).to.equal('MasterCard');
+    detectNetwork('5312345678901234').should.equal('MasterCard');
   });
 
 
@@ -253,7 +254,7 @@ describe('Maestro', function() {
     detectNetwork('50381234567834').should.equal('Maestro');
   });
   it('has a prefix of 5038 and a length of 15', function() {
-    detectNetwork('501812345678345').should.equal('Maestro');
+    detectNetwork('503812345678345').should.equal('Maestro');
   });
   it('has a prefix of 5038 and a length of 16', function() {
     detectNetwork('5038123456783456').should.equal('Maestro');
@@ -291,5 +292,31 @@ describe('Maestro', function() {
   it('has a prefix of 6304 and a length of 19', function() {
     detectNetwork('6304123456783456789').should.equal('Maestro');
   });
+
+  it('has a prefix of 4903 and a length of 16, 18, or 19', function() {
+    detectNetwork('4903263456783456').should.equal('Switch');
+  });
 });
 
+
+describe('China UnionPay', function() {
+  // Write full test coverage for the China UnionPay card
+  for (var prefix = 622126; prefix <= 622925; prefix++) {
+    var cardString = prefix + '1234567890';
+    for (var length = 16; length <= 19; length++) {
+      (function(prefix, length, cardString) {
+        it('has a prefix of ' + prefix + ' and a length of' + length, function() {
+          detectNetwork(cardString).should.equal('China UnionPay');
+        });
+      })(prefix, length, cardString)
+      cardString = cardString + '1'
+    }
+  }
+});
+
+describe('Switch', function() {
+  // Write full test coverage for the Switch card
+  it('has a prefix of 4903 and a length of 16, 18, or 19', function() {
+    detectNetwork('4903263456783456').should.equal('Switch');
+  });
+});
