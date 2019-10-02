@@ -383,4 +383,31 @@ describe('Switch', function() {
   it('has a prefix of 6333 and a length of 19', function() {
     detectNetwork('6333263456783456122').should.equal('Switch');
   });
+  it('has a prefix of 6759 and a length of 16', function() {
+    detectNetwork('6759263456783456').should.equal('Switch');
+  });
+  it('has a prefix of 6759 and a length of 18', function() {
+    detectNetwork('675926345678345612').should.equal('Switch');
+  });
+  it('has a prefix of 6759 and a length of 19', function() {
+    detectNetwork('6759263456783456122').should.equal('Switch');
+  });
+  it('has a prefix of 564182 and a length of 16', function() {
+    detectNetwork('5641823456783456').should.equal('Switch');
+  });
+  it('has a prefix of 564182 and a length of 18', function() {
+    detectNetwork('564182345678345612').should.equal('Switch');
+  });
+  it('has a prefix of 564182 and a length of 19', function() {
+    detectNetwork('5641823456783456122').should.equal('Switch');
+  });
+  it('has a prefix of 633110 and a length of 16', function() {
+    detectNetwork('6331103456783456').should.equal('Switch');
+  });
+  it('has a prefix of 633110 and a length of 18', function() {
+    detectNetwork('633110345678345612').should.equal('Switch');
+  });
+  it('has a prefix of 633110 and a length of 19', function() {
+    detectNetwork('6331103456783456122').should.equal('Switch');
+  });
 });
