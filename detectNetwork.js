@@ -39,6 +39,14 @@ var detectNetwork = function(cardNumber) {
     return 'Discover'
   } else if ((cardNumber[0] + cardNumber[1] === '65') && (cardNumber.length === 16 || cardNumber.length === 19)) {
     return 'Discover'
+  } else if ((cardNumber[0] + cardNumber[1] + cardNumber[2] + cardNumber[3] === '5018') && (cardNumber.length >= 12 && cardNumber.length <= 19)) {
+    return 'Maestro'
+  } else if ((cardNumber[0] + cardNumber[1] + cardNumber[2] + cardNumber[3] === '5020') && (cardNumber.length >= 12 && cardNumber.length <= 19)) {
+    return 'Maestro'
+  } else if ((cardNumber[0] + cardNumber[1] + cardNumber[2] + cardNumber[3] === '5038') && (cardNumber.length >= 12 && cardNumber.length <= 19)) {
+    return 'Maestro'
+  } else if ((cardNumber[0] + cardNumber[1] + cardNumber[2] + cardNumber[3] === '6304') && (cardNumber.length >= 12 && cardNumber.length <= 19)) {
+    return 'Maestro'
   }
 };
 
